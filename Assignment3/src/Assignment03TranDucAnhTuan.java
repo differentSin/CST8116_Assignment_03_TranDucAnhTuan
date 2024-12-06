@@ -2,7 +2,7 @@
  * Student Name: Tran Duc Anh Tuan
  * Student ID: 041151991
  * Course: CST8116 370
- * Desription: a program that is used to roll dice and to test git commit
+ * Desription: a program that is used to roll dice and to test git commit.
  * 
  */
 
