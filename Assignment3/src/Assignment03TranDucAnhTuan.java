@@ -23,8 +23,8 @@ public class Assignment03TranDucAnhTuan {
 		    countResults[rollResults[count] - 1]++;
 		}
 		// Display the results
-		for(int rollNum = 0; rollNum <= rollResults.length; ++rollNum) {  //Crashes
-		    System.out.printf("Result of roll #%d is: %d%n", rollNum, rollResults[rollNum]);
+		for(int rollNum = 1; rollNum <= rollResults.length; ++rollNum) {  //Crashes
+		    System.out.printf("Result of roll #%d is: %d%n", rollNum, rollResults[rollNum - 1]);
 		}
 		System.out.println("\nCount of each number rolled:");
 		for(int i = 0; i < countResults.length; ++i) {
