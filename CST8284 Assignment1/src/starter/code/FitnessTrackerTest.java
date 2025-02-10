@@ -9,6 +9,11 @@ package starter.code;
 
 import java.util.Scanner;
 
+/**
+ * Output class to print the result to console
+ * 
+ * @author Tran Duc Anh Tuan
+ */
 public class FitnessTrackerTest {
 
 	public static void main(String[] args) {
@@ -46,7 +51,7 @@ public class FitnessTrackerTest {
 		System.out.println();
 		input.close(); //close the scanner to prevent resource leak
 		
-		//Initiate object with full parameters instead of using setter
+		//Initiate object with full parameters
 		FitnessTracker fitnessTracker = new FitnessTracker(firstName, lastName, gender, stepsTakenDaily, caloriesBurnedDaily, activeMinutesDaily, maintenanceCalories);
 		fitnessTracker.displayFitnessData();
 		

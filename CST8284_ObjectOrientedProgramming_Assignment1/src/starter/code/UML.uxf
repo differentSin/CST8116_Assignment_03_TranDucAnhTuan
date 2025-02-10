@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1.0">
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>572</w>
+      <h>561</h>
+    </coordinates>
+    <panel_attributes>FitnessTracker
+--
+-firstName: String
+-lastname: String
+-gender: String
+-stepsTakenDaily: int
+-caloriesBurnedDaily: double
+-activeMinutesDaily: double
+-maintenanceCalories: double
+--
++FitnessTracker()
++FitnessTracker(firstName: String, lastName: String, gender: String, stepsT
+akenDaily: String, caloriesBurnedDaily: String, activeMinutesDaily: String, m
+aintenanceCalories: String)
++getFirstName(): String
++setFirstName(firstName: String): void
++getLastName(): String
++setLastName(lastName: String): void
++getGender(): String
++setGender(gender: String): void
++getStepsTakenDaily(): int
++setStepsTakenDaily(stepsTakenDaily: int): void
++getCaloriesBurnedDaily(): double
++setCaloriesBurnedDaily(caloriesBurnedDaily: double): void
++getActiveMinutesDaily(): double
++setActiveMinutesDaily(activeMinutesDaily: double): void
++getMaintenanceCalories(): double
++setMaintenanceCalories(maintenanceCalories: double): void
++calculateDistance(): double
++calculateActiveMinutesWeekly(): double
++calculateFitnessLevel(): String
++calculateCalorieDeficit(): double
++displayFitnessData(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>561</y>
+      <w>209</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>FitnessTrackerTest
+--
++main(args: String[]): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

@@ -8,7 +8,7 @@ package starter.code;
 
 /**
  * FitnessTracker.java Starter code for FitnessTracker assignment.
- * TODO: Complete the documentation (Javadoc)
+ * @author Tran Duc Anh Tuan
  */
 public class FitnessTracker {
 
@@ -41,7 +41,7 @@ public class FitnessTracker {
 	/**
 	 * Calories burned daily
 	 */
-	private int caloriesBurnedDaily;
+	private double caloriesBurnedDaily;
 	
 	/**
 	 * Daily active minutes
@@ -51,7 +51,7 @@ public class FitnessTracker {
 	/**
 	 * Daily maintenance calories
 	 */
-	private int maintenanceCalories;
+	private double maintenanceCalories;
 	
 	/**
 	 * Constant for a male step: 0.8
@@ -78,19 +78,15 @@ public class FitnessTracker {
 	}
 	
 	/**
-	 * Constructor overloading that takes in stepsTakenDaily and Gender arguments 
-	 * to specifically test the calculateDistance() method in Junit 
-	 * @param stepsTakenDaily
-	 * @param gender
-	 */
-	public FitnessTracker(int stepsTakenDaily, String gender) {
-		this.stepsTakenDaily = stepsTakenDaily;
-		this.gender = gender;
-	}
-	
-	/**
-	 * Constructor takes all arguments and assigned it to instance variables
+	 * Constructor takes all 7 arguments and assigned it to instance variables.
 	 * Works like a setter
+	 * @param firstName First name
+	 * @param lastName Last name
+	 * @param gender Gender
+	 * @param stepsTakenDaily Daily steps taken
+	 * @param caloriesBurnedDaily Calories burned per day
+	 * @param activeMinutesDaily Minutes exercising per day
+	 * @param maintenanceCalories Maintenance calories needs to burn
 	 */
 	public FitnessTracker(String firstName, String lastName, String gender, int stepsTakenDaily, int caloriesBurnedDaily, double activeMinutesDaily, int maintenanceCalories) {
 		this.firstName = firstName;
@@ -103,6 +99,9 @@ public class FitnessTracker {
 	}
 	// END CODE
 
+	
+	
+	
 
 	/*		TODO 3: INCLUDE YOUR SET AND GET METHODS HERE. CHECK THE UML CLASS DIAGRAM TO
 	 *					ENSURE ALL ARE COMPLETE.
@@ -111,6 +110,7 @@ public class FitnessTracker {
 
 	// START CODE
 	//No JavaDoc generated for getters and setters because it is obvious what they are doing
+	//firstName
 	public String getFirstName() {
 		return firstName;
 	}
@@ -119,7 +119,7 @@ public class FitnessTracker {
 	}
 	
 
-
+	//lastName
 	public String getLastName() {
 		return lastName;
 	}
@@ -128,7 +128,7 @@ public class FitnessTracker {
 	}
 	
 
-
+	//gender
 	public String getGender() {
 		return gender;
 	}
@@ -137,7 +137,7 @@ public class FitnessTracker {
 	}
 	
 
-
+	//stepsTakenDaily
 	public int getStepsTakenDaily() {
 		return stepsTakenDaily;
 	}
@@ -146,16 +146,16 @@ public class FitnessTracker {
 	}
 	
 
-
+	//caloriesBurnedDaily
 	public double getCaloriesBurnedDaily() {
 		return caloriesBurnedDaily;
 	}
-	public void setCaloriesBurnedDaily(int caloriesBurnedDaily) {
+	public void setCaloriesBurnedDaily(double caloriesBurnedDaily) {
 		this.caloriesBurnedDaily = caloriesBurnedDaily;
 	}
 	
 
-
+	//activeMinutesDaily
 	public double getActiveMinutesDaily() {
 		return activeMinutesDaily;
 	}
@@ -164,7 +164,7 @@ public class FitnessTracker {
 	}
 
 	
-		
+	//maintenanceCalories
 	public double getMaintenanceCalories() {
 		return maintenanceCalories;
 	}
@@ -184,6 +184,7 @@ public class FitnessTracker {
 	 * Calculate daily walking distance by taking the daily steps taken multiply with 
 	 * FEMALE_WALK or MALE_WALK, based on gender
 	 * @return daily distance calculated
+	 * 
 	 */
 	public double calculateDistance() {
 		double dailySteps = stepsTakenDaily; //Implicit casting of integer variable stepsTakenDaily to double
@@ -203,6 +204,7 @@ public class FitnessTracker {
 	/**
 	 * Calculate total (NOT average) active minutes of the week
 	 * @return daily active minutes multiply by 7 days
+	 * 
 	 */
 	public double calculateActiveMinutesWeekly() {
 		return activeMinutesDaily * 7;
@@ -211,31 +213,39 @@ public class FitnessTracker {
 	
 	/**
 	 * Determine fitness level based on calculateActiveMinutesWeekly() method and caloriesBurnedDaily variable
+	 * The calories condition is based on daily calories, resemble the sample output.
+	 * If invalid arguments, return String "Error".
+	 * 
 	 * @return fitness level determined
 	 */
 	public String calculateFitnessLevel() {
-		String fitnessLevel;
-		if (calculateActiveMinutesWeekly() > 150.0 
-			&& caloriesBurnedDaily > 2000) {
+		String fitnessLevel; //local variable to hold value for the method's return
+		if (calculateActiveMinutesWeekly() > 150.0 && caloriesBurnedDaily > 2000.0) {
 			fitnessLevel = "Active";
-		} else if (calculateActiveMinutesWeekly() > 75.0 
-				  && calculateActiveMinutesWeekly() < 150.0
-				  && caloriesBurnedDaily > 2000) {
+		} else if (calculateActiveMinutesWeekly() >= 75.0 && calculateActiveMinutesWeekly() <= 150.0 
+				  && caloriesBurnedDaily > 2000.0) {
 			fitnessLevel = "Moderately Active";
-		} else {
+		} else if (calculateActiveMinutesWeekly() < 75.0 && caloriesBurnedDaily < 1000.0){
 			fitnessLevel = "Sedentary";
+		} else {
+			return "Error";
 		}
 		return fitnessLevel;
 	}
 	
 	
 	/**
-	 * Calculate calorie deficit by subtracting maintenanceCalories with caloriesBurnedDaily; Both variables are double so the result can be negative
-	 * 
+	 * Calculate calorie deficit by subtracting maintenanceCalories with caloriesBurnedDaily; 
+	 * Both variables are double so the result can be negative
+	 * If one of the variables are negative, IllegalArgumentException will be thrown.
 	 * @return differences between maintenanceCalories and caloriesBurnedDaily
 	 */
-	public int calculateCalorieDeficit() {
-		return maintenanceCalories - caloriesBurnedDaily;
+	public double calculateCalorieDeficit() {
+		if (maintenanceCalories < 0) {
+			throw new IllegalArgumentException("maintenance calories cannot be negative");
+		} else {
+			return maintenanceCalories - caloriesBurnedDaily;
+		}
 	}
 	
 
@@ -258,7 +268,7 @@ public class FitnessTracker {
 		System.out.printf("Daily Distance Walked: %.1f meters\n", calculateDistance());
 		System.out.printf("Weekly Active Minutes: %.1f \n", calculateActiveMinutesWeekly());
 		System.out.printf("Fitness Level: %s \n", calculateFitnessLevel());
-		System.out.printf("Daily Calorie Deficit/Surplus: %d \n", calculateCalorieDeficit());
+		System.out.printf("Daily Calorie Deficit/Surplus: %.1f \n", calculateCalorieDeficit());
 		System.out.println();
 		// END CODE
 
